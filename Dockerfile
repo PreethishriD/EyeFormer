@@ -6,11 +6,14 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy model and server
+# Pre-download HuggingFace model during build (so no internet needed at runtime)
+COPY preload_model.py .
+RUN python preload_model.py
+
+# Copy model weights and server
 COPY segformer.pth .
 COPY server.py .
 
-# Render uses dynamic PORT env var
 ENV PORT=10000
 EXPOSE 10000
 
