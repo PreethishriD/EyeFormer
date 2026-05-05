@@ -8,7 +8,7 @@ interface PredictionResult {
   probabilities: { [key: string]: number };
 }
 
-const API_URL = "http://localhost:5050";
+const API_URL = "https://eyeformer.onrender.com";
 
 const Demo: React.FC = () => {
   const [stage, setStage] = useState<'idle' | 'preview' | 'scanning' | 'result' | 'error'>('idle');
