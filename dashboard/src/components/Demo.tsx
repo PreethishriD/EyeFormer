@@ -61,7 +61,7 @@ const Demo: React.FC = () => {
       setStage('result');
     } catch (err: any) {
       setErrorMsg(err.message?.includes('fetch') 
-        ? 'Could not connect to the model server. Please ensure server.py is running on port 5050.'
+        ? 'Could not connect to the model server. If this is the first request in a while, the cloud server may be waking up (takes ~50s). Please try again.'
         : err.message || 'An error occurred during analysis.');
       setStage('error');
     }
@@ -300,9 +300,9 @@ const Demo: React.FC = () => {
                 </div>
                 <h4 className="font-orbitron font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Inference Error</h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed mb-6">{errorMsg}</p>
-                <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-left">
-                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">To start the server:</p>
-                  <code className="text-[10px] text-primary bg-sky-50 px-3 py-2 rounded block">python server.py</code>
+                <div className="p-4 bg-slate-50 border border-slate-100 rounded-xl text-left mt-2">
+                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-2">Note on Free Tier:</p>
+                  <p className="text-[10px] text-slate-600 leading-relaxed">The Render API goes to sleep after 15 minutes of inactivity. First requests may take ~50 seconds to complete while the server boots up.</p>
                 </div>
               </motion.div>
             )}
