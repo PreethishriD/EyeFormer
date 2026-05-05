@@ -5,7 +5,7 @@ import { BarChart3, TrendingUp, Award, Table } from 'lucide-react';
 const Results: React.FC = () => {
   const modelComparison = [
     { model: "SegFormer", accuracy: 96.0, recall: 95.2 },
-    { model: "ViT (Base)", accuracy: 95.0, recall: 86.4 },
+    { model: "ViT", accuracy: 95.0, recall: 86.4 },
     { model: "MobileViT", accuracy: 94.0, recall: 93.1 },
     { model: "MaxViT", accuracy: 92.0, recall: 95.5 },
   ];
@@ -42,7 +42,7 @@ const Results: React.FC = () => {
       </div>
 
       {/* Graphs — Side by Side, Reduced Size */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         {/* Training Curves */}
         <motion.div
@@ -53,12 +53,32 @@ const Results: React.FC = () => {
         >
           <div className="px-5 py-3.5 border-b border-slate-100 flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-secondary shrink-0" />
-            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-orbitron">Training & Validation Curves</h3>
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-orbitron">Training Curves</h3>
           </div>
           <div className="p-5">
             <img src="/assets/training_curves.png" alt="Training Curves" className="w-full object-contain rounded-lg border border-slate-100" style={{maxHeight: '220px'}} />
             <p className="text-xs text-slate-500 leading-relaxed mt-3">
-              Convergence of training and validation accuracy demonstrates robust generalisation without overfitting.
+              Convergence of training and validation accuracy demonstrates robust generalisation.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Model Inference Samples */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="glass-panel border-slate-100 shadow-md overflow-hidden"
+        >
+          <div className="px-5 py-3.5 border-b border-slate-100 flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-secondary shrink-0" />
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-widest font-orbitron">Inference Samples</h3>
+          </div>
+          <div className="p-5">
+            <img src="/assets/sample_img.jpeg" alt="Sample Images" className="w-full object-contain rounded-lg border border-slate-100" style={{maxHeight: '220px'}} />
+            <p className="text-xs text-slate-500 leading-relaxed mt-3">
+              Output visualization of classification successfully detecting conditions with high confidence.
             </p>
           </div>
         </motion.div>
@@ -68,7 +88,7 @@ const Results: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 0.2 }}
           className="glass-panel border-slate-100 shadow-md overflow-hidden"
         >
           <div className="px-5 py-3.5 border-b border-slate-100 flex items-center gap-2">
@@ -124,7 +144,7 @@ const Results: React.FC = () => {
             </tbody>
           </table>
           <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-100">
-            <p className="text-xs text-slate-400 italic">Table 5.1 — Comparative Analysis of Transformer Models for Ocular Disease Classification.</p>
+            <p className="text-xs text-slate-400 italic">Comparative Analysis of Transformer Models for Ocular Disease Classification.</p>
           </div>
         </div>
 
@@ -141,7 +161,7 @@ const Results: React.FC = () => {
             <div className="space-y-3">
               {[
                 { label: "SegFormer", val: 96, active: true },
-                { label: "CNN Baseline", val: 84, active: false },
+                { label: "ViT", val: 95, active: false },
               ].map(({ label, val, active }) => (
                 <div key={label} className={`p-3 rounded-xl border ${active ? 'bg-sky-50 border-sky-100' : 'bg-slate-50 border-slate-100'}`}>
                   <div className="flex justify-between items-center mb-1.5">
@@ -162,12 +182,6 @@ const Results: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-5 rounded-xl bg-primary text-white shadow-md shadow-sky-100 relative overflow-hidden">
-            <p className="text-xs font-bold uppercase tracking-widest mb-1.5 opacity-80 font-orbitron">Phase II Result</p>
-            <h4 className="text-base font-black font-orbitron mb-2 leading-snug">+12.5% vs. CNN Baselines</h4>
-            <p className="text-xs opacity-80 leading-relaxed">Transformer architecture achieves state-of-the-art performance on ocular surface classification.</p>
-            <BarChart3 className="absolute -bottom-3 -right-3 w-20 h-20 opacity-10" />
-          </div>
         </div>
       </div>
     </div>

@@ -20,11 +20,12 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl font-black mb-6 leading-[1.1] text-slate-900"
+          className="text-3xl md:text-5xl font-black mb-6 leading-[1.2] text-slate-900"
         >
-          Advanced <span className="text-primary">Transformer</span> <br />
-          Ocular Diagnostic <br />
-          Framework
+          A Comparative <span className="text-primary">Transformer-Based</span> <br />
+          Framework for Automated <br />
+          Classification of Pterygium <br />
+          and Conjunctivitis
         </motion.h1>
         
         <motion.p 

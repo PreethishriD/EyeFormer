@@ -83,7 +83,7 @@ const Downloads: React.FC = () => {
             
             <div className="space-y-6">
               {[
-                { label: "Phase-I Project", title: "CNN-Based Eye Classification", url: "https://github.com/PreethishriD/EYE_PROJECT.git" },
+                { label: "Phase-I Project", title: "Previous Eye Classification", url: "https://github.com/PreethishriD/EYE_PROJECT.git" },
                 { label: "Phase-II Project", title: "Transformer Models Repo", url: "https://github.com/PreethishriD/EYE-PROJECT-MODELS-" }
               ].map((repo, i) => (
                 <div key={i} className="p-5 rounded-xl border border-slate-100 bg-slate-50 hover:bg-white hover:border-primary/20 transition-all group">

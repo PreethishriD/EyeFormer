@@ -6,6 +6,8 @@ import Results from './components/Results';
 import Demo from './components/Demo';
 import Downloads from './components/Downloads';
 import Impact from './components/Impact';
+import Abstract from './components/Abstract';
+import Gallery from './components/Gallery';
 
 const App: React.FC = () => {
   return (
@@ -22,16 +24,19 @@ const App: React.FC = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Eye className="text-white w-4 h-4" />
             </div>
-            <span className="font-orbitron font-bold text-sm tracking-tight text-slate-900">EYE<span className="text-primary">FORMER</span></span>
+              <span className="font-orbitron font-bold text-[11px] tracking-tight text-slate-900 leading-tight">
+                A Comparative Transformer-Based Framework <br/>
+                <span className="text-primary font-normal text-[9px]">for Automated Classification of Pterygium and Conjunctivitis</span>
+              </span>
           </div>
           <div className="hidden md:flex items-center gap-8 font-orbitron text-[10px] tracking-widest text-slate-500 uppercase">
-            {['Home', 'Architecture', 'Results', 'Impact', 'Demo', 'Downloads'].map((item) => (
+            {['Home', 'Abstract', 'Architecture', 'Results', 'Models', 'Impact', 'Demo'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 className="hover:text-primary transition-colors cursor-pointer"
               >
-                {item}
+                {item === 'Models' ? 'Model Architectures' : item}
               </a>
             ))}
           </div>
@@ -44,6 +49,10 @@ const App: React.FC = () => {
           <Hero />
         </section>
 
+        <section id="abstract" className="py-24 px-6 max-w-7xl mx-auto border-t border-slate-100">
+          <Abstract />
+        </section>
+
         <section id="architecture" className="py-24 px-6 max-w-7xl mx-auto border-t border-slate-100">
           <Architecture />
         </section>
@@ -52,6 +61,10 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <Results />
           </div>
+        </section>
+
+        <section id="models" className="py-24 px-6 max-w-7xl mx-auto border-t border-slate-100">
+          <Gallery />
         </section>
 
         <section id="impact" className="py-24 px-6 max-w-7xl mx-auto">
@@ -77,7 +90,10 @@ const App: React.FC = () => {
               <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
                 <Eye className="text-white w-4 h-4" />
               </div>
-              <span className="font-orbitron font-bold text-sm tracking-tight text-slate-900">EYE<span className="text-primary">FORMER</span></span>
+              <span className="font-orbitron font-bold text-[11px] tracking-tight text-slate-900 leading-tight">
+                A Comparative Transformer-Based Framework <br/>
+                <span className="text-primary font-normal text-[9px]">for Automated Classification of Pterygium and Conjunctivitis</span>
+              </span>
             </div>
             <p className="text-slate-400 text-xs max-w-xs leading-relaxed">
               Advanced Transformer-Based Framework for Automated Classification of Ocular Surface Diseases.

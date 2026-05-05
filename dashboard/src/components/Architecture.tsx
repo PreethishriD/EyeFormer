@@ -63,18 +63,23 @@ const Architecture: React.FC = () => {
         <div className="lg:col-span-5 space-y-8">
           {[
             {
-              title: "Hierarchical Encoder",
+              title: "SegFormer (Hierarchical Encoder)",
               desc: "Extracts multi-scale features from ocular images, capturing both fine pathological textures and broad anatomical structures.",
               icon: <Layers className="w-5 h-5 text-primary" />
             },
             {
-              title: "Self-Attention Mechanism",
-              desc: "Models long-range dependencies across image patches, allowing the framework to focus on specific symptomatic regions.",
+              title: "MaxViT (Multi-Axis Vision Transformer)",
+              desc: "Employs multi-axis attention to capture both local and global dependencies linearly, enhancing scalability.",
               icon: <Share2 className="w-5 h-5 text-secondary" />
             },
             {
-              title: "MLP Decoder Head",
-              desc: "A lightweight decoder that aggregates features from different layers to produce the final classification probability.",
+              title: "MobileViT",
+              desc: "A lightweight, general-purpose vision transformer designed for mobile devices, combining the benefits of local convolutions and ViTs.",
+              icon: <Cpu className="w-5 h-5 text-amber-500" />
+            },
+            {
+              title: "ViT (Vision Transformer)",
+              desc: "Applies a pure transformer directly to sequences of image patches, demonstrating excellent performance on classification tasks.",
               icon: <Box className="w-5 h-5 text-accent" />
             }
           ].map((item, index) => (
@@ -100,7 +105,7 @@ const Architecture: React.FC = () => {
             <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Core Advantage</h4>
             <div className="p-4 bg-sky-50 rounded-lg border border-sky-100">
               <p className="text-[11px] font-bold text-primary leading-relaxed">
-                "Unlike traditional CNNs, the Transformer architecture excels in understanding the global spatial relationship 
+                "Unlike traditional models, the Transformer architecture excels in understanding the global spatial relationship 
                 between ocular pathologies, leading to higher diagnostic precision."
               </p>
             </div>
