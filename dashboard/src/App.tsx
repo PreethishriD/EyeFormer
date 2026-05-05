@@ -77,7 +77,7 @@ const App: React.FC = () => {
               <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
                 <Eye className="text-white w-4 h-4" />
               </div>
-              <span className="font-orbitron font-bold text-sm tracking-tighter text-slate-900">OCULAR<span className="text-primary">AI</span></span>
+              <span className="font-orbitron font-bold text-sm tracking-tight text-slate-900">EYE<span className="text-primary">FORMER</span></span>
             </div>
             <p className="text-slate-400 text-xs max-w-xs leading-relaxed">
               Advanced Transformer-Based Framework for Automated Classification of Ocular Surface Diseases.
