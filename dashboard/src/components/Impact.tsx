@@ -47,7 +47,7 @@ const Impact: React.FC = () => {
         </motion.div>
         <h2 className="text-3xl font-bold mb-4 text-slate-900">Sustainable <span className="text-emerald-600">Impact</span></h2>
         <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          The EYEFORMER project is strategically aligned with the United Nations Sustainable Development 
+          This project is strategically aligned with the United Nations Sustainable Development 
           Goals, aiming to democratize high-end medical diagnostics.
         </p>
       </div>
@@ -74,21 +74,6 @@ const Impact: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-12 p-8 glass-panel border-emerald-100 bg-emerald-50/10 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="flex items-center gap-6">
-          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg shadow-emerald-100 border border-emerald-50">
-            <Globe className="w-8 h-8 text-emerald-600 animate-pulse-slow" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-slate-900 font-orbitron uppercase tracking-widest">Global Health Initiative</h4>
-            <p className="text-[11px] text-emerald-700/70 font-medium">Mapped to 5 Key Sustainability Verticals</p>
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="px-4 py-2 bg-emerald-600 text-white text-[10px] font-bold font-orbitron rounded-full tracking-widest uppercase">Target 2030</div>
-          <div className="px-4 py-2 bg-white text-emerald-600 border border-emerald-100 text-[10px] font-bold font-orbitron rounded-full tracking-widest uppercase shadow-sm">Phase II Active</div>
-        </div>
-      </div>
     </div>
   );
 };
