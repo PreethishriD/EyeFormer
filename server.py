@@ -6,6 +6,11 @@ from transformers import SegformerForImageClassification, SegformerImageProcesso
 from PIL import Image
 import io
 import os
+import gc
+
+# Optimize PyTorch for low-RAM environments (Render Free Tier - 512MB)
+torch.set_num_threads(1)
+torch.set_grad_enabled(False)
 
 app = Flask(__name__)
 CORS(app)
@@ -21,11 +26,16 @@ model = SegformerForImageClassification.from_pretrained(
     ignore_mismatched_sizes=True
 )
 
-# Load weights — works both locally and on HuggingFace Spaces
+# Load weights
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "segformer.pth")
 state_dict = torch.load(MODEL_PATH, map_location=torch.device("cpu"))
 model.load_state_dict(state_dict, strict=True)
 model.eval()
+
+# Delete state_dict and clear memory right after loading to free up RAM
+del state_dict
+gc.collect()
+
 print("Model loaded OK. Labels:", LABELS)
 
 
@@ -42,9 +52,9 @@ def predict():
     except Exception as e:
         return jsonify({"error": f"Invalid image: {str(e)}"}), 400
 
-    inputs = processor(images=image, return_tensors="pt")
-
+    # Ensure no gradients are tracked
     with torch.no_grad():
+        inputs = processor(images=image, return_tensors="pt")
         outputs = model(**inputs)
         logits = outputs.logits
         probs = F.softmax(logits, dim=1)[0]
@@ -53,6 +63,10 @@ def predict():
     confidence = round(probs[predicted_idx].item() * 100, 2)
     label = LABELS[predicted_idx]
     all_probs = {LABELS[i]: round(probs[i].item() * 100, 2) for i in range(len(LABELS))}
+
+    # Force garbage collection after each prediction to prevent memory buildup
+    del inputs, outputs, logits, image, img_bytes
+    gc.collect()
 
     return jsonify({
         "prediction": label,
